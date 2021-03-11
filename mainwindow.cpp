@@ -126,9 +126,18 @@ void MainWindow::on_btnOkEport_clicked()
 
                // write to file
 
-               QString path = "C:\\Qt\\QT\\Step_base-main\\Step_base-main\\export.txt";
+             QString path = "C:\\Qt\\QT\\Step_base-main\\Step_base-main\\export.txt";
                QFile file(path);
-               QTextStream stream(&file);
+
+               if (file.open(QIODevice::WriteOnly))
+               {
+                   file.write(export_all.toLocal8Bit());
+
+                   file.close();
+               }
+
+
+
                file.close();
     
     
