@@ -21,9 +21,7 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_btnSubmit_clicked();
-
-    void on_btnSelectTable_clicked();
+    
 
     void on_btnAdd_clicked();
 
