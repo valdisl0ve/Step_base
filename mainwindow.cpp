@@ -32,28 +32,8 @@ MainWindow::~MainWindow()
 }
 
 
-void MainWindow::on_btnSubmit_clicked()
-{
-
-    QSqlQuery query = QSqlQuery(db);
-            if(!query.exec("select* from table_person")){
-                    qDebug() << query.lastError().databaseText();
-                     qDebug() << query.lastError().driverText();
-                     return;
-}
-            while(query.next()) {
 
 
-
-
-                qDebug() << query.record();
-            }
-}
-
-void MainWindow::on_btnSelectTable_clicked()
-{
-    model->select();
-}
 
 void MainWindow::on_btnAdd_clicked()
 {
@@ -98,8 +78,7 @@ void MainWindow::on_btnOk_clicked()
     model->select();
     ui->tableView->setModel(model);
 
-    ui->comboBox->setModel(model);
-    ui->comboBox->setModelColumn(1);
+   
 
 
 
