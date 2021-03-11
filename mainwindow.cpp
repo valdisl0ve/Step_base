@@ -104,4 +104,33 @@ void MainWindow::on_btnOkEport_clicked()
     ui->btnOkEport->hide();
     data_export = ui->exportPath->text();
     ui->label->setText("DATABASE WAS EXPORTED TO CSV " + data_export);
+    
+    
+    
+     QSqlQuery query = QSqlQuery(db);
+                if(!query.exec("select* from table_person")){
+
+                         return;
+    }
+                while(query.next()) {
+
+
+                export_all = export_all + query.value(0).toString()
+                        + ";" + query.value(1).toString() + ";"
+                        + query.value(2).toString() + "\n";
+
+
+                }
+
+               ui->label_export->setText(export_all);
+
+               // write to file
+
+               QString path = "C:\\Qt\\QT\\Step_base-main\\Step_base-main\\export.txt";
+               QFile file(path);
+               QTextStream stream(&file);
+               file.close();
+    
+    
+    
 }
