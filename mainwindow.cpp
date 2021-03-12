@@ -139,7 +139,39 @@ void MainWindow::on_btnOkEport_clicked()
 
 
                file.close();
-    
+    export_all = "";
     
     
 }
+
+
+void MainWindow::on_btn_find_clicked()
+{
+         QString find =  ui->input_find->text();
+        // ui->lineEdit_find->setText(find);
+    QSqlQuery query = QSqlQuery(db);
+               if(!query.exec("select* from table_person")){
+                        return;
+   }
+               while(query.next()) {
+
+                  if (find == query.value(0) || find == query.value(1) || find == query.value(2) ){
+
+                      QString row_find = query.value(0).toString()
+                              + "; " + query.value(1).toString() + "; "
+                              + query.value(2).toString() + "\n";
+                      //int row_find = ui->tableView->currentIndex().row();
+                       // ui->lineEdit_find->setText(row_find);
+                       // model->selectRow(row_find);
+                      ui->input_find->setText(row_find);
+                  }
+               }
+
+
+
+
+}
+
+
+
+
