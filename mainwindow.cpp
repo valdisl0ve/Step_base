@@ -3,6 +3,7 @@
 #include <QDebug>
 #include <QSqlError>
 #include <QSqlRecord>
+#include <QFile>
 
 
 
